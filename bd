@@ -1,0 +1,4 @@
+user(PK id, name, surname, email, password, UNIQUE cart_id)
+product(PK id, name, price, description, cart_id )
+cartItem(id, quantity, product_id, cart_id)
+cart(id, totalcost)

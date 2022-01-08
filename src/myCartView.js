@@ -33,9 +33,7 @@ class MyCartView {
              </tr>
              </thead>
             `;
-    
-    //cu for of ///////////////////////////////////////////////////////////////
-            //Object.values(cartItems).map(item => {
+
                 cartItems.forEach(item => {
                     
                 let totalItemCost = item.price * item.inCart;
@@ -46,7 +44,7 @@ class MyCartView {
                 const cartTable = document.querySelector('.cart-table');
     
                 let itemImg = document.createElement('img');
-                itemImg.src = `/src/img/${item.image}`
+                itemImg.src = `../src/img/${item.image}`
                 itemImg.style = "width: 100%;"
     
                 let titleTD = document.createElement('td');

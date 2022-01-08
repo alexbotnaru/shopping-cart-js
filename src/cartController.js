@@ -6,6 +6,7 @@ function CartController(products) {
     const cartBtn = document.querySelector('.cart');
     const clearBtn = document.querySelector('.clear-cart');
 
+
     let cart = new Cart();
 
     
@@ -26,11 +27,10 @@ function CartController(products) {
 
     clearBtn.addEventListener('click', () => {
         cart.clearCart();
+        //cart.load();
         cart.displayCartItems();
     });
 
-
-    
 }
 
 export default CartController

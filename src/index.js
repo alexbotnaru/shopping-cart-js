@@ -9,10 +9,20 @@ import ProductsView from "./productsView";
 import CartController from "./cartController";
 import MyCartView from "./myCartView";
 
+
+
 let products = Storage.getItem(constants.PRODUCTS_STORAGE_KEY) ?? [];
 const productsView = new ProductsView();
 
+
 productsView.displayProducts(products);
+
+
+
+// const deleteBtn = document.querySelector('.btn-danger');
+// deleteBtn.addEventListener('click', {
+//
+// })
 
 /*
 const addCart = document.querySelectorAll('.add-cart');
@@ -32,6 +42,7 @@ for (let i = 0; i < addCart.length; i++) {
 cartBtn.addEventListener('click', cart.displayCartItems());
 */
 CartController(products);
+
 
 
 

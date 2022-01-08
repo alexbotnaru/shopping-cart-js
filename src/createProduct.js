@@ -33,4 +33,3 @@ const onSubmit = (event) => {
 
 form.addEventListener('submit', onSubmit);
 
-

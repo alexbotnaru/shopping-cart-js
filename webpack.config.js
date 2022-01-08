@@ -17,14 +17,15 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    createProduct: './src/createProduct.js'
+    createProduct: './src/createProduct.js',
+    product: './src/productView.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].bundle.js',
   },
   plugins: [
-  new HtmlWebpackPlugin({  // Also generate a test.html
+  new HtmlWebpackPlugin({
     chunks: ['index'],
     filename: 'index.html',
     template: './src/index.html'
@@ -33,6 +34,12 @@ module.exports = {
     chunks: ['createProduct'],
     filename: 'createProduct.html',
     template: './src/createProduct.html'
-  })
+  }),
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      chunks: ['product'],
+      filename: 'product.html',
+      template: './src/product.html'
+    })
+
 ],
 };
