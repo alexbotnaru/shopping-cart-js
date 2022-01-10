@@ -69,7 +69,6 @@ class MyCartView {
     
                 deleteButtonTD.append(deleteIcon);
     
-    
                 itemRow.append(itemImg, titleTD, priceTD, amountTD, totalTD, deleteButtonTD);
                 cartTable.append(itemRow);
     
@@ -81,5 +80,4 @@ class MyCartView {
     }
 
 }
-
 export default MyCartView
