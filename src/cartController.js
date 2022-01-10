@@ -1,22 +1,13 @@
 import Cart from "./cart";
-import Product from "./product";
 
 function CartController(products) {
     const addCart = document.querySelectorAll('.add-cart');
     const cartBtn = document.querySelector('.cart');
     const clearBtn = document.querySelector('.clear-cart');
-
+    const cartTotal = document.querySelector('.cart-total');
 
     let cart = new Cart();
 
-    
-    
-    /* addCart.forEach((item, i) => {
-         item.addEventListener('click',() => {
-             cart.addProduct(products[i]);
-             cart.save;
-         })
-     });*/
     for (let i = 0; i < addCart.length; i++) {
         addCart[i].addEventListener('click', () => {
             cart.increaseOrAdd(products[i]);
@@ -27,7 +18,8 @@ function CartController(products) {
 
     clearBtn.addEventListener('click', () => {
         cart.clearCart();
-        //cart.load();
+        cart.load();
+        cartTotal.classList.add('hidden');
         cart.displayCartItems();
     });
 
