@@ -7,6 +7,7 @@ import Storage from "./storage";
 import Utils from "./utils";
 import ProductsView from "./productsView";
 import CartController from "./cartController";
+import ProductsController from "./productsController";
 import MyCartView from "./myCartView";
 
 
@@ -42,6 +43,7 @@ for (let i = 0; i < addCart.length; i++) {
 cartBtn.addEventListener('click', cart.displayCartItems());
 */
 CartController(products);
+ProductsController(products);
 
 
 
