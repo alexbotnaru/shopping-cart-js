@@ -6,6 +6,7 @@ function CartController(products) {
     const clearBtn = document.querySelector('.clear-cart');
     const cartTotal = document.querySelector('.cart-total');
 
+
     let cart = new Cart();
 
     for (let i = 0; i < addCart.length; i++) {
