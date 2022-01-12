@@ -1,7 +1,7 @@
 const Storage = {
     getItem(key) {
       try {
-        return JSON.parse(window.localStorage.getItem(key));
+        return JSON.parse(window.localStorage.getItem(key)) ?? [];
       } catch (e) {
         return null;
       }
