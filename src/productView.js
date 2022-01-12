@@ -1,4 +1,5 @@
 import "./styles/style.css";
+import CartController from "./cartController";
 console.log('products detail page');
 function fetchProduct(){
     let urlString = window.location.href;
@@ -9,6 +10,9 @@ function fetchProduct(){
     let productHtml = ``;
 
     const productDetails = document.querySelector('.productDetails');
+    const addToCartBtn = document.querySelector('.btn-warning');
+
+    CartController(productsArray);
 
     for(let product of productsArray){
         if(product.id === productId) {
@@ -31,7 +35,7 @@ function fetchProduct(){
                     <h4>${ourProduct.description}</h4>
                     <h3>${ourProduct.price}$</h3><span>*includes tax</span>
                     <br>
-                    <a href="#" class="btn btn-success mt-5"> Buy now</a>
+                    <a href="#" class="btn btn-success mt-5 disabled"> Buy now</a>
                     <a href="#" class="btn btn-warning mt-5"> Add to cart</a>
 
                 </div>
@@ -41,5 +45,8 @@ function fetchProduct(){
 
     productDetails.innerHTML = productHtml;
 
+    addToCartBtn.addEventListener('click', () => {
+
+    })
 }
 fetchProduct();

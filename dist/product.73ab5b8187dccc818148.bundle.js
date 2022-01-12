@@ -166,17 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cart */ \"./src/cart.js\");\n\r\n\r\n\r\nfunction CartController(products) {\r\n    const addCart = document.querySelectorAll('.add-cart');\r\n    const cartBtn = document.querySelector('.cart');\r\n    const clearBtn = document.querySelector('.clear-cart');\r\n    const cartTotal = document.querySelector('.cart-total');\r\n\r\n\r\n    let cart = new _cart__WEBPACK_IMPORTED_MODULE_0__.default();\r\n\r\n    for (let i = 0; i < addCart.length; i++) {\r\n        addCart[i].addEventListener('click', () => {\r\n            cart.increaseOrAdd(products[i]);\r\n            cart.displayCartItems();\r\n        })\r\n    }\r\n    cartBtn.addEventListener('click', cart.displayCartItems());\r\n\r\n    clearBtn.addEventListener('click', () => {\r\n        cart.clearCart();\r\n        cart.load();\r\n        cartTotal.classList.add('hidden');\r\n        cart.displayCartItems();\r\n    });\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CartController);\n\n//# sourceURL=webpack://shoppingcartjs/./src/cartController.js?");
-
-/***/ }),
-
-/***/ "./src/cartView.js":
-/*!*************************!*\
-  !*** ./src/cartView.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass CartView {\r\n    constructor(options) {\r\n      this.node = document.getElementById(\"cart\");\r\n      this.options = options;\r\n    }\r\n  \r\n    showProducts(products) {\r\n      const list = document.createElement(\"ul\");\r\n      list.addEventListener(\"click\", () => this.options.onListClick);\r\n  \r\n      products.forEach((product) => {\r\n        const item = document.createElement(\"li\");\r\n        item.innerText = `${product.name}\r\n        ${product.getFormattedPrice()}\r\n        `;\r\n  \r\n        const deleteButton = document.createElement(\"button\");\r\n        deleteButton.innerText = \"Delete\";\r\n        deleteButton.addEventListener(\"click\", (event) => {\r\n          event.stopPropagation();\r\n          this.options.onProductDelete(product);\r\n        });\r\n  \r\n        item.appendChild(deleteButton);\r\n  \r\n        item.addEventListener(\"click\", () =>\r\n          this.options.onProductClick(product)\r\n        );\r\n        list.appendChild(item);\r\n      });\r\n  \r\n      this.node.innerHTML = \"\";\r\n      this.node.appendChild(list);\r\n    }\r\n  }\r\n\r\n  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CartView);\n\n//# sourceURL=webpack://shoppingcartjs/./src/cartView.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cart */ \"./src/cart.js\");\n\r\n\r\nfunction CartController(products) {\r\n    const addCart = document.querySelectorAll('.add-cart');\r\n    const cartBtn = document.querySelector('.cart');\r\n    const clearBtn = document.querySelector('.clear-cart');\r\n    const cartTotal = document.querySelector('.cart-total');\r\n\r\n\r\n    let cart = new _cart__WEBPACK_IMPORTED_MODULE_0__.default();\r\n\r\n    for (let i = 0; i < addCart.length; i++) {\r\n        addCart[i].addEventListener('click', () => {\r\n            cart.increaseOrAdd(products[i]);\r\n            cart.displayCartItems();\r\n        })\r\n    }\r\n    cartBtn.addEventListener('click', cart.displayCartItems());\r\n\r\n    clearBtn.addEventListener('click', () => {\r\n        cart.clearCart();\r\n        cart.load();\r\n        cartTotal.classList.add('hidden');\r\n        cart.displayCartItems();\r\n    });\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CartController);\n\n//# sourceURL=webpack://shoppingcartjs/./src/cartController.js?");
 
 /***/ }),
 
@@ -187,16 +177,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"constants\": () => (/* binding */ constants),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst constants = {\r\n    CART_ITEMS_STORAGE_KEY: \"cartItems\",\r\n    PRODUCTS_STORAGE_KEY: \"products\"\r\n  };\r\n  \r\n  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (constants);\n\n//# sourceURL=webpack://shoppingcartjs/./src/constants.js?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ \"./src/styles/style.css\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n/* harmony import */ var _product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product */ \"./src/product.js\");\n/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart */ \"./src/cart.js\");\n/* harmony import */ var _cartView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cartView */ \"./src/cartView.js\");\n/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./storage */ \"./src/storage.js\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ \"./src/utils.js\");\n/* harmony import */ var _productsView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./productsView */ \"./src/productsView.js\");\n/* harmony import */ var _cartController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cartController */ \"./src/cartController.js\");\n/* harmony import */ var _productsController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./productsController */ \"./src/productsController.js\");\n/* harmony import */ var _myCartView__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./myCartView */ \"./src/myCartView.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nlet products = _storage__WEBPACK_IMPORTED_MODULE_5__.default.getItem(_constants__WEBPACK_IMPORTED_MODULE_1__.default.PRODUCTS_STORAGE_KEY) ?? [];\r\nconst productsView = new _productsView__WEBPACK_IMPORTED_MODULE_7__.default();\r\n\r\n\r\nproductsView.displayProducts(products);\r\n\r\n\r\n\r\n// const deleteBtn = document.querySelector('.btn-danger');\r\n// deleteBtn.addEventListener('click', {\r\n//\r\n// })\r\n\r\n/*\r\nconst addCart = document.querySelectorAll('.add-cart');\r\nconst cartBtn = document.querySelector('.cart');\r\n\r\nlet cart = new Cart();\r\n\r\nfor (let i = 0; i < addCart.length; i++) {\r\n    addCart[i].addEventListener('click', () => {\r\n        \r\n        cart.increaseOrAdd(products[i]);\r\n        cart.displayCartItems();\r\n\r\n    })\r\n}   \r\n\r\ncartBtn.addEventListener('click', cart.displayCartItems());\r\n*/\r\n(0,_cartController__WEBPACK_IMPORTED_MODULE_8__.default)(products);\r\n(0,_productsController__WEBPACK_IMPORTED_MODULE_9__.default)(products);\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://shoppingcartjs/./src/index.js?");
 
 /***/ }),
 
@@ -220,23 +200,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/productsController.js":
-/*!***********************************!*\
-  !*** ./src/productsController.js ***!
-  \***********************************/
+/***/ "./src/productView.js":
+/*!****************************!*\
+  !*** ./src/productView.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ \"./src/storage.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n/* harmony import */ var _productsView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./productsView */ \"./src/productsView.js\");\n\r\n\r\n\r\n\r\nfunction ProductsController(products){\r\n\r\n    const deleteBtn = document.querySelectorAll('.btn-danger');\r\n\r\n    for (let i = 0; i < deleteBtn.length; i++) {\r\n\r\n        deleteBtn[i].addEventListener('click', () => {\r\n            products.splice(i, 1);\r\n            _storage__WEBPACK_IMPORTED_MODULE_0__.default.setItem(_constants__WEBPACK_IMPORTED_MODULE_1__.default.PRODUCTS_STORAGE_KEY, products);\r\n            const productsView = new _productsView__WEBPACK_IMPORTED_MODULE_2__.default();\r\n            productsView.displayProducts(products);\r\n\r\n        })\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductsController);\n\n//# sourceURL=webpack://shoppingcartjs/./src/productsController.js?");
-
-/***/ }),
-
-/***/ "./src/productsView.js":
-/*!*****************************!*\
-  !*** ./src/productsView.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass ProductsView {\r\n    constructor() {\r\n        this.node = document.querySelector('.product-card');\r\n    }\r\n\r\n    displayProducts(products) {\r\n        let displayProduct = '';\r\n\r\n\r\n        products.forEach((item, i) => {\r\n            if (i % 4 === 0) {\r\n                displayProduct += `<div class=\"row\">`;\r\n            }\r\n\r\n\r\n            displayProduct +=\r\n                `\r\n            <div class=\"card col-md-4 col-6 col-lg-3 mt-4 col\">\r\n            \r\n            <a href=\"product.html?id=${item.id}\">\r\n                <img src=\"../src/img/${item.image}\" class=\"card-img-top\" alt=\"${item.image}\">\r\n                </a>\r\n                <div class=\"card-body\">\r\n                    <h5 class=\"card-title\">${item.title}</h5>\r\n                    <p class=\"card-text\">${item.description}<br> ${item.price}$</p>\r\n                    <a href=\"#\" class=\"btn btn-primary btn add-cart\"> Add to cart<i class=\"bi bi-cart-plus\"></i></a> <span> <a href=\"\" class=\"btn btn-danger\">Delete</a></span>\r\n                </div>\r\n            </div>\r\n       `;\r\n\r\n            if (i % 4 === 3) {\r\n                displayProduct += `</div>`\r\n            }\r\n\r\n            this.node.innerHTML = displayProduct;\r\n\r\n        });\r\n\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductsView);\n\n//# sourceURL=webpack://shoppingcartjs/./src/productsView.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ \"./src/styles/style.css\");\n/* harmony import */ var _cartController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cartController */ \"./src/cartController.js\");\n\r\n\r\nconsole.log('products detail page');\r\nfunction fetchProduct(){\r\n    let urlString = window.location.href;\r\n    let url = new URL(urlString);\r\n    let productId = url.searchParams.get(\"id\");\r\n    let productsArray = JSON.parse(localStorage.getItem('products'));\r\n    var ourProduct = {};\r\n    let productHtml = ``;\r\n\r\n    const productDetails = document.querySelector('.productDetails');\r\n    const addToCartBtn = document.querySelector('.btn-warning');\r\n\r\n    (0,_cartController__WEBPACK_IMPORTED_MODULE_1__.default)(productsArray);\r\n\r\n    for(let product of productsArray){\r\n        if(product.id === productId) {\r\n            ourProduct = JSON.parse(JSON.stringify(product));\r\n        }\r\n    }\r\n\r\n    productHtml += `\r\n        <br>\r\n        <div class=\"container-xl\">\r\n            <div class=\"row\">\r\n                <div class=\"col\">\r\n                    <img src=\"../src/img/${ourProduct.image}\" class=\"card-img-top\" alt=\"${ourProduct.image}\">\r\n                </div>\r\n                <div class=\"col mt-5\" style=\"text-align: center\" >\r\n\r\n                    <br>\r\n                    <br>\r\n                    <h2>${ourProduct.title}</h2>\r\n                    <h4>${ourProduct.description}</h4>\r\n                    <h3>${ourProduct.price}$</h3><span>*includes tax</span>\r\n                    <br>\r\n                    <a href=\"#\" class=\"btn btn-success mt-5 disabled\"> Buy now</a>\r\n                    <a href=\"#\" class=\"btn btn-warning mt-5\"> Add to cart</a>\r\n\r\n                </div>\r\n\r\n        </div>\r\n        `\r\n\r\n    productDetails.innerHTML = productHtml;\r\n\r\n    addToCartBtn.addEventListener('click', () => {\r\n\r\n    })\r\n}\r\nfetchProduct();\n\n//# sourceURL=webpack://shoppingcartjs/./src/productView.js?");
 
 /***/ }),
 
@@ -332,7 +302,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/productView.js");
 /******/ 	
 /******/ })()
 ;
