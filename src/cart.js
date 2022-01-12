@@ -46,19 +46,6 @@ class Cart {
 
   increaseOrAdd(product) {
     this.load();
-    /*
-    this.products.forEach(item => {
-      console.log(item.id === product.id)
-      if(item.id === product.id) {
-        this.increaseQuantity(product);
-        return
-      }
-      else {
-        this.addProduct(product);
-        return
-      }
-    });
-  }*/
 
     if (this.products.length === 0) {
       console.log('empty', product)
@@ -74,25 +61,7 @@ class Cart {
           this.increaseQuantity(item)
         }
       });
-    }/*
-  console.log('product', product)
-  product = new Product(product);
-console.log('instance of :', product instanceof Product);
-  console.log('Product',product)
-  if(this.products.some(elem => elem.id === product.id)){
-    console.log('true')
-    this.increaseQuantity(product);
-  } else {
-    console.log('false');
-    this.addProduct(product);
-  }*/
-
-    /*console.log(this.products.includes(product));
-    if (this.products.includes(product)) {
-      this.increaseQuantity(product)
-    } else {
-      this.addProduct(product);
-    }*/
+    }
   }
 
   removeProduct(product) {

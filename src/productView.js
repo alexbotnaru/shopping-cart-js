@@ -1,21 +1,23 @@
 import "./styles/style.css";
 import CartController from "./cartController";
-console.log('products detail page');
-function fetchProduct(){
+import Storage from "./storage";
+import constants from "./constants";
+import Cart from "./cart";
+
+function fetchProduct() {
     let urlString = window.location.href;
     let url = new URL(urlString);
     let productId = url.searchParams.get("id");
-    let productsArray = JSON.parse(localStorage.getItem('products'));
+    let productsArray = Storage.getItem(constants.PRODUCTS_STORAGE_KEY);
     var ourProduct = {};
     let productHtml = ``;
 
     const productDetails = document.querySelector('.productDetails');
-    const addToCartBtn = document.querySelector('.btn-warning');
 
     CartController(productsArray);
 
-    for(let product of productsArray){
-        if(product.id === productId) {
+    for (let product of productsArray) {
+        if (product.id === productId) {
             ourProduct = JSON.parse(JSON.stringify(product));
         }
     }
@@ -36,7 +38,7 @@ function fetchProduct(){
                     <h3>${ourProduct.price}$</h3><span>*includes tax</span>
                     <br>
                     <a href="#" class="btn btn-success mt-5 disabled"> Buy now</a>
-                    <a href="#" class="btn btn-warning mt-5"> Add to cart</a>
+                    <a href="#" class="btn btn-warning mt-5 addToCart"> Add to cart</a>
 
                 </div>
 
@@ -45,8 +47,38 @@ function fetchProduct(){
 
     productDetails.innerHTML = productHtml;
 
+
+    const addToCartBtn = document.querySelector('.addToCart');
+
     addToCartBtn.addEventListener('click', () => {
+        let cartItems = Storage.getItem(constants.CART_ITEMS_STORAGE_KEY);
+
+        for (let item of cartItems) {
+            if (ourProduct.id === item.id) {
+                item.inCart++;
+            }
+        }
+
+        var found = cartItems.find(function(item, index){
+            if (item.id === ourProduct.id) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+        if (found === undefined){
+            ourProduct.inCart = 1;
+            cartItems.push(ourProduct);
+        }
+
+        const cart = new Cart();
+
+        Storage.setItem(constants.CART_ITEMS_STORAGE_KEY, cartItems);
+        cart.load();
+        cart.displayCartItems();
 
     })
 }
+
 fetchProduct();
